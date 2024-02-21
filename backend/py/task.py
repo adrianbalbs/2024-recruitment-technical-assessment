@@ -1,3 +1,4 @@
+import heapq
 from dataclasses import dataclass
 
 
@@ -31,22 +32,19 @@ Task 2
 
 def kLargestCategories(files: list[File], k: int) -> list[str]:
     counts = {}
-    freq = [[] for i in range(len(files) + 1)]
-
     for file in files:
         for category in file.categories:
             counts[category] = counts.get(category, 0) + 1
 
+    freq = []
     for category, count in counts.items():
-        freq[count].append(category)
+        heapq.heappush(freq, (-count, category))
 
     res = []
-    for i in range(len(freq) - 1, 0, -1):
-        for j in freq[i]:
-            res.append(j)
-            if len(res) == k:
-                return res
-    return []
+    for _ in range(0, k):
+        _, categories = heapq.heappop(freq)
+        res.append(categories)
+    return res
 
 
 """
@@ -102,7 +100,6 @@ if __name__ == "__main__":
         "Video.mp4",
     ]
 
-    print(largestFileSize(testFiles))
-    # assert kLargestCategories(testFiles, 3) == ["Documents", "Folder", "Media"]
+    assert kLargestCategories(testFiles, 3) == ["Documents", "Folder", "Media"]
 
     assert largestFileSize(testFiles) == 20992
