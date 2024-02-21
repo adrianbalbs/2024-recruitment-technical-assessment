@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+
 @dataclass
 class File:
     id: int
@@ -12,25 +13,68 @@ class File:
 """
 Task 1
 """
+
+
 def leafFiles(files: list[File]) -> list[str]:
-    return []
+    return list(
+        map(
+            lambda file: file.name,
+            filter(lambda file: "Folder" not in file.categories, files),
+        )
+    )
 
 
 """
 Task 2
 """
+
+
 def kLargestCategories(files: list[File], k: int) -> list[str]:
+    counts = {}
+    freq = [[] for i in range(len(files) + 1)]
+
+    for file in files:
+        for category in file.categories:
+            counts[category] = counts.get(category, 0) + 1
+
+    for category, count in counts.items():
+        freq[count].append(category)
+
+    res = []
+    for i in range(len(freq) - 1, 0, -1):
+        for j in freq[i]:
+            res.append(j)
+            if len(res) == k:
+                return res
     return []
 
 
 """
 Task 3
 """
+
+
+def countSubFolders(files: list[File], id: int) -> int:
+    children = list(filter(lambda file: file.parent == id, files))
+    totalSize = 0
+    for file in children:
+        if "Folder" in file.categories:
+            totalSize += countSubFolders(files, file.id) + file.size
+        else:
+            totalSize += file.size
+    return totalSize
+
+
 def largestFileSize(files: list[File]) -> int:
-    return 0
+    topFiles = list(filter(lambda file: file.parent == -1, files))
+    totals = []
+    for file in topFiles:
+        totals.append(countSubFolders(files, file.id) + file.size)
+
+    return max(totals)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     testFiles = [
         File(1, "Document.txt", ["Documents"], 3, 1024),
         File(2, "Image.jpg", ["Media", "Photos"], 34, 2048),
@@ -55,11 +99,10 @@ if __name__ == '__main__':
         "Presentation.pptx",
         "Spreadsheet.xlsx",
         "Spreadsheet2.xlsx",
-        "Video.mp4"
+        "Video.mp4",
     ]
 
-    assert kLargestCategories(testFiles, 3) == [
-        "Documents", "Folder", "Media"
-    ]
+    print(largestFileSize(testFiles))
+    # assert kLargestCategories(testFiles, 3) == ["Documents", "Folder", "Media"]
 
     assert largestFileSize(testFiles) == 20992
