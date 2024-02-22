@@ -43,7 +43,7 @@ function Dashboard() {
                     <p className="text-xs">{course.total_reviews} reviews</p>
                   </div>
                 </div>
-                <p className="text-sm h-16">{course.course_title}</p>
+                <p className="text-sm h-16 mt-2">{course.course_title}</p>
                 <div className="flex flex-wrap gap-2">
                   {course.offered_terms.map((term) => {
                     return (
