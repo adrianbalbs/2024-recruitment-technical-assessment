@@ -1,4 +1,5 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import courses from "../../assets/courses.json";
 
 function Dashboard() {
   return (
@@ -24,132 +25,37 @@ function Dashboard() {
           </select>
         </div>
         <div className="grid grid-cols-3 gap-12">
-          <div className="text-black bg-elective-card rounded-lg shadow-md py-7 px-6">
-            <div className="flex justify-between">
-              <h2 className="font-bold text-2xl">COMP1511</h2>
-              <div>
-                <span className="text-search-bar text-2xl">★★★★★</span>
-                <p className="text-gray-600 text-xs">69 reviews</p>
+          {courses.map((course) => {
+            return (
+              <div className="text-black bg-elective-card rounded-lg shadow-md py-7 px-6">
+                <div className="flex justify-between">
+                  <h2 className="font-bold text-2xl">
+                    COMP{course.course_code}
+                  </h2>
+                  <div className="relative text-star-unfilled">
+                    <span className="text-2xl">★★★★★</span>
+                    <span
+                      className="absolute inset-0 text-star-filled text-2xl overflow-clip"
+                      style={{ width: `${(course.average_stars / 5) * 100}%` }}
+                    >
+                      ★★★★★
+                    </span>
+                    <p className="text-xs">{course.total_reviews} reviews</p>
+                  </div>
+                </div>
+                <p className="text-sm h-16">{course.course_title}</p>
+                <div className="flex flex-wrap gap-2">
+                  {course.offered_terms.map((term) => {
+                    return (
+                      <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
+                        {term}
+                      </span>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-            <p className="text-sm h-16">Programming Fundamentals</p>
-            <div className="flex flex-wrap gap-2">
-              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
-                Term 1
-              </span>
-              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
-                Term 2
-              </span>
-              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
-                Term 3
-              </span>
-            </div>
-          </div>
-          <div className="text-black bg-elective-card rounded-lg shadow-md py-7 px-6">
-            <div className="flex justify-between">
-              <h2 className="font-bold text-2xl">COMP1511</h2>
-              <div>
-                <span className="text-search-bar text-2xl">★★★★★</span>
-                <p className="text-gray-600 text-xs">69 reviews</p>
-              </div>
-            </div>
-            <p className="text-sm h-16">Programming Fundamentals</p>
-            <div className="flex flex-wrap gap-2">
-              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
-                Term 1
-              </span>
-              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
-                Term 2
-              </span>
-              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
-                Term 3
-              </span>
-            </div>
-          </div>
-          <div className="text-black bg-elective-card rounded-lg shadow-md py-7 px-6">
-            <div className="flex justify-between">
-              <h2 className="font-bold text-2xl">COMP1511</h2>
-              <div>
-                <span className="text-search-bar text-2xl">★★★★★</span>
-                <p className="text-gray-600 text-xs">69 reviews</p>
-              </div>
-            </div>
-            <p className="text-sm h-16">Programming Fundamentals</p>
-            <div className="flex flex-wrap gap-2">
-              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
-                Term 1
-              </span>
-              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
-                Term 2
-              </span>
-              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
-                Term 3
-              </span>
-            </div>
-          </div>
-          <div className="text-black bg-elective-card rounded-lg shadow-md py-7 px-6">
-            <div className="flex justify-between">
-              <h2 className="font-bold text-2xl">COMP1511</h2>
-              <div>
-                <span className="text-search-bar text-2xl">★★★★★</span>
-                <p className="text-gray-600 text-xs">69 reviews</p>
-              </div>
-            </div>
-            <p className="text-sm h-16">Programming Fundamentals</p>
-            <div className="flex flex-wrap gap-2">
-              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
-                Term 1
-              </span>
-              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
-                Term 2
-              </span>
-              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
-                Term 3
-              </span>
-            </div>
-          </div>
-          <div className="text-black bg-elective-card rounded-lg shadow-md py-7 px-6">
-            <div className="flex justify-between">
-              <h2 className="font-bold text-2xl">COMP1511</h2>
-              <div>
-                <span className="text-search-bar text-2xl">★★★★★</span>
-                <p className="text-gray-600 text-xs">69 reviews</p>
-              </div>
-            </div>
-            <p className="text-sm h-16">Programming Fundamentals</p>
-            <div className="flex flex-wrap gap-2">
-              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
-                Term 1
-              </span>
-              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
-                Term 2
-              </span>
-              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
-                Term 3
-              </span>
-            </div>
-          </div>
-          <div className="text-black bg-elective-card rounded-lg shadow-md py-7 px-6">
-            <div className="flex justify-between">
-              <h2 className="font-bold text-2xl">COMP1511</h2>
-              <div>
-                <span className="text-search-bar text-2xl">★★★★★</span>
-                <p className="text-gray-600 text-xs">69 reviews</p>
-              </div>
-            </div>
-            <p className="text-sm h-16">Programming Fundamentals</p>
-            <div className="flex flex-wrap gap-2">
-              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
-                Term 1
-              </span>
-              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
-                Term 2
-              </span>
-              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
-                Term 3
-              </span>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </div>
     </div>
