@@ -6,11 +6,11 @@ function Dashboard() {
       <div className=" w-5/6 flex flex-col gap-4">
         <p className="text-sm text-black">DevSoc presents</p>
         <h1 className="text-7xl text-header-blue font-bold">unilectives</h1>
-        <p className="text-md text-black font-bold">
+        <p className="text-xl text-black font-bold">
           Your one-stop shop for UNSW course and elective reviews.
         </p>
         <div>
-          <div className="border-solid border-2 rounded border-search-bar flex items-center mt-8 mb-4">
+          <div className="border-solid border-2 rounded border-search-bar flex items-center mb-2">
             <MagnifyingGlassIcon className="w-6 h-6 text-search-bar mx-2" />
             <input
               type="text"
@@ -18,7 +18,7 @@ function Dashboard() {
               placeholder="Search for a course e.g. COMP1511"
             />
           </div>
-          <select className="h-10 pr-12 bg-white text-black border rounded border-black shadow-md outline-none">
+          <select className="h-10 pr-12 bg-white text-black border rounded border-black outline-none">
             <option>Alphabetical A-Z</option>
             <option>Overall Rating</option>
           </select>
