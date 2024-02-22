@@ -1,2 +1,16 @@
 Please detail the instructions to view your solution here:
 
+Install pnpm:
+  npm install -g pnpm
+
+Change into root dir of project:
+  cd unilectives-front-page
+
+Install deps:
+  pnpm install
+
+Build:
+  pnpm run build 
+
+Run Preview:
+  pnpm run preview
