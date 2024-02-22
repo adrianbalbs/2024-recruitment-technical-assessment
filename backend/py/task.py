@@ -16,13 +16,24 @@ Task 1
 """
 
 
+def dfsTask1(files: list[File], id: int, name: str) -> list[str]:
+    childFiles = list(filter(lambda file: file.parent == id, files))
+    if not childFiles:
+        return [name]
+    res = []
+    for file in childFiles:
+        res = res + dfsTask1(files, file.id, file.name)
+
+    return res
+
+
 def leafFiles(files: list[File]) -> list[str]:
-    return list(
-        map(
-            lambda file: file.name,
-            filter(lambda file: "Folder" not in file.categories, files),
-        )
-    )
+    topFiles = list(filter(lambda file: file.parent == -1, files))
+    res = []
+
+    for file in topFiles:
+        res = res + dfsTask1(files, file.id, file.name)
+    return res
 
 
 """
@@ -52,12 +63,12 @@ Task 3
 """
 
 
-def countSubFolders(files: list[File], id: int) -> int:
+def dfsTask3(files: list[File], id: int) -> int:
     children = list(filter(lambda file: file.parent == id, files))
     totalSize = 0
     for file in children:
         if "Folder" in file.categories:
-            totalSize += countSubFolders(files, file.id) + file.size
+            totalSize += dfsTask3(files, file.id) + file.size
         else:
             totalSize += file.size
     return totalSize
@@ -67,7 +78,7 @@ def largestFileSize(files: list[File]) -> int:
     topFiles = list(filter(lambda file: file.parent == -1, files))
     totals = []
     for file in topFiles:
-        totals.append(countSubFolders(files, file.id) + file.size)
+        totals.append(dfsTask3(files, file.id) + file.size)
 
     return max(totals)
 
