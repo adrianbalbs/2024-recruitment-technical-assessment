@@ -9,7 +9,7 @@ function Dashboard() {
         <p className="text-md text-black font-bold">
           Your one-stop shop for UNSW course and elective reviews.
         </p>
-        <div>
+        <div className="mb-8">
           <div className="border-solid border-2 rounded border-search-bar flex items-center mt-8 mb-4">
             <MagnifyingGlassIcon className="w-6 h-6 text-search-bar mx-2" />
             <input
@@ -22,6 +22,134 @@ function Dashboard() {
             <option>Alphabetical A-Z</option>
             <option>Overall Rating</option>
           </select>
+        </div>
+        <div className="grid grid-cols-3 gap-12">
+          <div className="text-black bg-elective-card rounded-lg shadow-md py-7 px-6">
+            <div className="flex justify-between">
+              <h2 className="font-bold text-2xl">COMP1511</h2>
+              <div>
+                <span className="text-search-bar text-2xl">★★★★★</span>
+                <p className="text-gray-600 text-xs">69 reviews</p>
+              </div>
+            </div>
+            <p className="text-sm h-16">Programming Fundamentals</p>
+            <div className="flex flex-wrap gap-2">
+              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
+                Term 1
+              </span>
+              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
+                Term 2
+              </span>
+              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
+                Term 3
+              </span>
+            </div>
+          </div>
+          <div className="text-black bg-elective-card rounded-lg shadow-md py-7 px-6">
+            <div className="flex justify-between">
+              <h2 className="font-bold text-2xl">COMP1511</h2>
+              <div>
+                <span className="text-search-bar text-2xl">★★★★★</span>
+                <p className="text-gray-600 text-xs">69 reviews</p>
+              </div>
+            </div>
+            <p className="text-sm h-16">Programming Fundamentals</p>
+            <div className="flex flex-wrap gap-2">
+              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
+                Term 1
+              </span>
+              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
+                Term 2
+              </span>
+              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
+                Term 3
+              </span>
+            </div>
+          </div>
+          <div className="text-black bg-elective-card rounded-lg shadow-md py-7 px-6">
+            <div className="flex justify-between">
+              <h2 className="font-bold text-2xl">COMP1511</h2>
+              <div>
+                <span className="text-search-bar text-2xl">★★★★★</span>
+                <p className="text-gray-600 text-xs">69 reviews</p>
+              </div>
+            </div>
+            <p className="text-sm h-16">Programming Fundamentals</p>
+            <div className="flex flex-wrap gap-2">
+              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
+                Term 1
+              </span>
+              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
+                Term 2
+              </span>
+              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
+                Term 3
+              </span>
+            </div>
+          </div>
+          <div className="text-black bg-elective-card rounded-lg shadow-md py-7 px-6">
+            <div className="flex justify-between">
+              <h2 className="font-bold text-2xl">COMP1511</h2>
+              <div>
+                <span className="text-search-bar text-2xl">★★★★★</span>
+                <p className="text-gray-600 text-xs">69 reviews</p>
+              </div>
+            </div>
+            <p className="text-sm h-16">Programming Fundamentals</p>
+            <div className="flex flex-wrap gap-2">
+              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
+                Term 1
+              </span>
+              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
+                Term 2
+              </span>
+              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
+                Term 3
+              </span>
+            </div>
+          </div>
+          <div className="text-black bg-elective-card rounded-lg shadow-md py-7 px-6">
+            <div className="flex justify-between">
+              <h2 className="font-bold text-2xl">COMP1511</h2>
+              <div>
+                <span className="text-search-bar text-2xl">★★★★★</span>
+                <p className="text-gray-600 text-xs">69 reviews</p>
+              </div>
+            </div>
+            <p className="text-sm h-16">Programming Fundamentals</p>
+            <div className="flex flex-wrap gap-2">
+              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
+                Term 1
+              </span>
+              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
+                Term 2
+              </span>
+              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
+                Term 3
+              </span>
+            </div>
+          </div>
+          <div className="text-black bg-elective-card rounded-lg shadow-md py-7 px-6">
+            <div className="flex justify-between">
+              <h2 className="font-bold text-2xl">COMP1511</h2>
+              <div>
+                <span className="text-search-bar text-2xl">★★★★★</span>
+                <p className="text-gray-600 text-xs">69 reviews</p>
+              </div>
+            </div>
+            <p className="text-sm h-16">Programming Fundamentals</p>
+            <div className="flex flex-wrap gap-2">
+              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
+                Term 1
+              </span>
+              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
+                Term 2
+              </span>
+              <span className="bg-term-tags rounded-full py-1 px-2 text-xs">
+                Term 3
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
