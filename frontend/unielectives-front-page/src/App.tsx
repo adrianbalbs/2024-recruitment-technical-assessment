@@ -1,4 +1,4 @@
-import { Navbar, Dashboard } from "./components";
+import { Navbar, Dashboard } from './components';
 
 function App() {
   return (

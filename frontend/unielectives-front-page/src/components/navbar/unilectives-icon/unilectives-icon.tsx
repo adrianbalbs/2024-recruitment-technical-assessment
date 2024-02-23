@@ -1,4 +1,4 @@
-import Unilectives from "../../../assets/unilectives.svg";
+import Unilectives from '../../../assets/unilectives.svg';
 
 export type UnilectivesIconProps = {
   className: string;
