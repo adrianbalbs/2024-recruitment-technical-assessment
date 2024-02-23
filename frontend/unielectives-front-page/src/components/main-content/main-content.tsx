@@ -5,7 +5,7 @@ import {
 
 import courses from '../../assets/courses.json';
 
-function Dashboard() {
+function MainContent() {
   return (
     <div className="ml-14 mt-12 flex h-full w-full flex-col items-center">
       <div className=" flex w-5/6 flex-col gap-4">
@@ -68,4 +68,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default MainContent;

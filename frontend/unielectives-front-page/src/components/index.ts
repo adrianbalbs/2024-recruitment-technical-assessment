@@ -1,4 +1,4 @@
-import Dashboard from './dashboard/dashboard';
+import MainContent from './main-content/main-content';
 import Navbar from './navbar/navbar';
 
-export { Navbar, Dashboard };
+export { Navbar, MainContent };

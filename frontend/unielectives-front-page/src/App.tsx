@@ -1,10 +1,10 @@
-import { Navbar, Dashboard } from './components';
+import { Navbar, MainContent } from './components';
 
 function App() {
   return (
     <div className="flex h-screen">
       <Navbar />
-      <Dashboard />
+      <MainContent />
     </div>
   );
 }
