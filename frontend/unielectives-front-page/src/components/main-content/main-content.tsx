@@ -4,13 +4,39 @@ import {
 } from '@heroicons/react/24/outline';
 
 import courses from '../../assets/courses.json';
+import { useState } from 'react';
+
+const colors = [
+  'text-header-blue',
+  'text-sky-400',
+  'text-blue-300',
+  'text-pink-300',
+  'text-blue-950',
+  'text-purple-900',
+  'text-pink-600',
+  'text-star-unfilled',
+  'text-star-filled',
+  'text-black',
+  'text-gray-600',
+];
 
 function MainContent() {
+  const [titleColor, setTitleColor] = useState(colors[0]);
+
+  function handleTitleColorChange() {
+    setTitleColor(colors[Math.floor(Math.random() * colors.length)]);
+  }
+
   return (
     <div className="ml-14 mt-12 flex h-full w-full flex-col items-center">
       <div className=" flex w-5/6 flex-col gap-4">
-        <p className="text-sm text-black">DevSoc presents</p>
-        <h1 className="text-7xl font-bold text-header-blue">unilectives</h1>
+        <p className="text-sm text-black drop-shadow-md">DevSoc presents</p>
+        <h1
+          className={`text-7xl font-bold ${titleColor} flex-grow-0 cursor-pointer`}
+          onClick={handleTitleColorChange}
+        >
+          unilectives
+        </h1>
         <p className="text-md font-bold text-black">
           Your one-stop shop for UNSW course and elective reviews.
         </p>
@@ -24,7 +50,7 @@ function MainContent() {
             />
           </div>
           <div className="flex w-56 justify-between rounded-md border border-gray-500 px-4 py-2 text-sm text-gray-500 shadow-md">
-            <span>Sort By</span>
+            <span>Sort by</span>
             <span>
               <ChevronDownIcon className="h-5 w-5" />
             </span>
@@ -46,7 +72,9 @@ function MainContent() {
                     >
                       ★★★★★
                     </span>
-                    <p className="text-xs">{course.total_reviews} reviews</p>
+                    <p className="text-xs text-gray-400">
+                      {course.total_reviews} reviews
+                    </p>
                   </div>
                 </div>
                 <p className="mt-2 h-16 text-sm">{course.course_title}</p>
