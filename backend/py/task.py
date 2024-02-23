@@ -47,6 +47,8 @@ def kLargestCategories(files: list[File], k: int) -> list[str]:
         for category in file.categories:
             counts[category] = counts.get(category, 0) + 1
 
+    # We negate the count as python only implements min heaps,
+    # this is a workaround to be able to use a max heap
     freq = []
     for category, count in counts.items():
         heapq.heappush(freq, (-count, category))
