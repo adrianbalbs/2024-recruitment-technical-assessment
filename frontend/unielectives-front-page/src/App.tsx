@@ -1,4 +1,3 @@
-import "./App.css";
 import { Navbar, Dashboard } from "./components";
 
 function App() {
