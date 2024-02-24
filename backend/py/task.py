@@ -1,4 +1,3 @@
-import heapq
 from dataclasses import dataclass
 
 
@@ -46,21 +45,32 @@ Task 2
 
 
 def kLargestCategories(files: list[File], k: int) -> list[str]:
-    counts = {}
+    # Preprocessing to add all categories into a list
+    categories = []
     for file in files:
-        for category in file.categories:
-            counts[category] = counts.get(category, 0) + 1
+        categories += file.categories
 
-    # We negate the count as python only implements min heaps,
-    # this is a workaround to be able to use a max heap
-    freq = []
+    counts = {}
+    for category in categories:
+        counts[category] = counts.get(category, 0) + 1
+
+    # Bucket sort to organise the categories, indexed by the count.
+    # The max count can only be at most the total number of categories present
+    frequencies = [[] for _ in range(len(categories) + 1)]
     for category, count in counts.items():
-        heapq.heappush(freq, (-count, category))
+        frequencies[count].append(category)
 
+    # the bucket sort allows us to linerally scan, which is better than using a heap,
+    # but having duplicate counts will make the worst case time complexity
+    # higher due to the sorting categories requirement
     res = []
-    for _ in range(0, k):
-        _, categories = heapq.heappop(freq)
-        res.append(categories)
+    for i in range(len(frequencies) - 1, 0, -1):
+        sortedFrequencies = sorted(frequencies[i])
+        for category in sortedFrequencies:
+            res.append(category)
+            if len(res) == k:
+                return res
+
     return res
 
 
@@ -78,7 +88,7 @@ def largestFileSize(files: list[File]) -> int:
 
     totals = {}
 
-    def dfs(file: File):
+    def dfs(file: File) -> int:
         if not adjList[file.id]:
             return file.size
 
