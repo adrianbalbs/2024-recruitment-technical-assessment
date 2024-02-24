@@ -17,6 +17,7 @@ Task 1
 
 
 def leafFiles(files: list[File]) -> list[str]:
+    # Maps an empty list to the file ids
     adjList = {file.id: [] for file in files}
 
     for file in files:
