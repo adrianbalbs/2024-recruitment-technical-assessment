@@ -16,23 +16,26 @@ Task 1
 """
 
 
-def dfsTask1(files: list[File], id: int, name: str) -> list[str]:
-    childFiles = list(filter(lambda file: file.parent == id, files))
-    if not childFiles:
-        return [name]
-    res = []
-    for file in childFiles:
-        res = res + dfsTask1(files, file.id, file.name)
-
-    return res
-
-
 def leafFiles(files: list[File]) -> list[str]:
-    topFiles = list(filter(lambda file: file.parent == -1, files))
+    adjList = {file.id: [] for file in files}
+
+    for file in files:
+        if file.parent != -1:
+            adjList[file.parent].append(file)
+
     res = []
 
-    for file in topFiles:
-        res = res + dfsTask1(files, file.id, file.name)
+    def dfs(fileId: int, fileName: str):
+        if not adjList[fileId] and fileName not in res:
+            res.append(fileName)
+            return
+
+        for childFile in adjList[fileId]:
+            dfs(childFile.id, childFile.name)
+
+    for file in files:
+        dfs(file.id, file.name)
+
     return res
 
 
@@ -65,24 +68,29 @@ Task 3
 """
 
 
-def dfsTask3(files: list[File], id: int) -> int:
-    children = list(filter(lambda file: file.parent == id, files))
-    totalSize = 0
-    for file in children:
-        if "Folder" in file.categories:
-            totalSize += dfsTask3(files, file.id) + file.size
-        else:
-            totalSize += file.size
-    return totalSize
-
-
 def largestFileSize(files: list[File]) -> int:
-    topFiles = list(filter(lambda file: file.parent == -1, files))
-    totals = []
-    for file in topFiles:
-        totals.append(dfsTask3(files, file.id) + file.size)
+    adjList = {file.id: [] for file in files}
 
-    return max(totals)
+    for file in files:
+        if file.parent != -1:
+            adjList[file.parent].append(file)
+
+    totals = {}
+
+    def dfs(file: File):
+        if not adjList[file.id]:
+            return file.size
+
+        total = file.size
+        for childFile in adjList[file.id]:
+            total += dfs(childFile)
+
+        return total
+
+    for file in files:
+        totals[file.id] = dfs(file)
+
+    return max(totals.values())
 
 
 if __name__ == "__main__":
