@@ -5,6 +5,7 @@ import {
 
 import courses from '../../assets/courses.json';
 import { useState } from 'react';
+import Dialog from './dialog/dialog';
 
 const colors = [
   'text-header-blue',
@@ -22,10 +23,14 @@ const colors = [
 
 function MainContent() {
   const [titleColor, setTitleColor] = useState(colors[0]);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  function handleTitleColorChange() {
+  const handleTitleColorChange = () => {
     setTitleColor(colors[Math.floor(Math.random() * colors.length)]);
-  }
+  };
+
+  const handleOpenDialog = () => setIsDialogOpen(true);
+  const handleCloseDialog = () => setIsDialogOpen(false);
 
   return (
     <div className="ml-14 mt-12 flex h-full w-full flex-col items-center">
@@ -45,6 +50,7 @@ function MainContent() {
             <MagnifyingGlassIcon className="mx-2 h-6 w-6 text-search-bar" />
             <input
               type="text"
+              onClick={handleOpenDialog}
               className="h-8 w-full bg-white py-2 pl-2 text-search-bar placeholder-search-bar outline-none"
               placeholder="Search for a course e.g. COMP1511"
             />
@@ -92,6 +98,7 @@ function MainContent() {
           })}
         </div>
       </div>
+      <Dialog isOpen={isDialogOpen} closeDialog={handleCloseDialog} />
     </div>
   );
 }
